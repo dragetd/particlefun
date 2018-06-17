@@ -1,0 +1,42 @@
+buildscript {
+    dependencies {
+        classpath 'de.dynamicfiles.projects.gradle.plugins:javafx-gradle-plugin:8.8.+'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+group 'net.speciesm.Main'
+version '0.1.0'
+
+sourceCompatibility = 1.8
+ext.mainClassName = 'net.speciesm.snowsnowsnow.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.+'
+    testCompile 'junit:junit:5.2.+'
+}
+
+apply plugin: 'javafx-gradle-plugin'
+
+jfx {
+    // minimal requirement for jfxJar-task
+    mainClass = mainClassName
+
+    // minimal requirement for jfxNative-task
+    vendor = 'SpeciesM.net'
+}
