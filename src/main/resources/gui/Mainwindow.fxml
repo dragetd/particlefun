@@ -3,7 +3,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="pnlRoot" onMouseClicked="#onClick" style="-fx-background-color: BLACk;" xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.speciesm.snowsnowsnow.gui.MainWindowController">
+<Pane fx:id="pnlRoot" onMouseClicked="#onClick" style="-fx-background-color: BLACk;" xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.speciesm.particlefun.gui.MainWindowController">
    <children>
       <Canvas fx:id="pnlCanvas" height="480.0" width="640.0">
       </Canvas>

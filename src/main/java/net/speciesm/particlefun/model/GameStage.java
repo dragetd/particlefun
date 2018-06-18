@@ -1,8 +1,8 @@
-package net.speciesm.snowsnowsnow.model;
+package net.speciesm.particlefun.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import net.speciesm.snowsnowsnow.model.particlesystem.GameObject;
+import net.speciesm.particlefun.model.particlesystem.GameObject;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package net.speciesm.snowsnowsnow.model.particlesystem;
+package net.speciesm.particlefun.model.particlesystem;
 
-import net.speciesm.snowsnowsnow.engine.Renderer;
+import net.speciesm.particlefun.engine.Renderer;
 
 /**
  * GameObject

@@ -1,26 +1,26 @@
-package net.speciesm.snowsnowsnow;
+package net.speciesm.particlefun;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import net.speciesm.snowsnowsnow.engine.GameLoop;
-import net.speciesm.snowsnowsnow.engine.JFXRenderer;
-import net.speciesm.snowsnowsnow.engine.Renderer;
-import net.speciesm.snowsnowsnow.gui.MainWindowController;
-import net.speciesm.snowsnowsnow.model.GameStage;
-import net.speciesm.snowsnowsnow.model.particlesystem.Snow.SnowSystem;
+import net.speciesm.particlefun.engine.GameLoop;
+import net.speciesm.particlefun.engine.JFXRenderer;
+import net.speciesm.particlefun.engine.Renderer;
+import net.speciesm.particlefun.gui.MainWindowController;
+import net.speciesm.particlefun.model.GameStage;
+import net.speciesm.particlefun.model.particlesystem.Snow.SnowSystem;
 
 import java.io.IOException;
 
 /**
- * Main - snowsnowsnow
+ * Main - particlefun
  *
  * @author Draget draget@speciesm.net
  */
 public class Main extends Application {
 
-    private static final String WND_NAME = "snowsnowsnow";
+    private static final String WND_NAME = "particlefun";
     private static final String WND_RESOURCEPATH = "/gui/Mainwindow.fxml";
 
     private static final int NUM_NEW_PARTICLES = 2000;

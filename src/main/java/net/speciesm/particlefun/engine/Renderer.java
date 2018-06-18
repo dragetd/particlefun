@@ -1,4 +1,4 @@
-package net.speciesm.snowsnowsnow.engine;
+package net.speciesm.particlefun.engine;
 
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;

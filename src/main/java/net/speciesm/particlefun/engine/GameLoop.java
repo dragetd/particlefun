@@ -1,11 +1,11 @@
-package net.speciesm.snowsnowsnow.engine;
+package net.speciesm.particlefun.engine;
 
 import javafx.animation.AnimationTimer;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import net.speciesm.snowsnowsnow.model.GameStage;
+import net.speciesm.particlefun.model.GameStage;
 
 /**
  * GameLoop

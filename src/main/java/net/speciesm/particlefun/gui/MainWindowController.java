@@ -1,4 +1,4 @@
-package net.speciesm.snowsnowsnow.gui;
+package net.speciesm.particlefun.gui;
 
 import javafx.animation.PauseTransition;
 import javafx.beans.value.ChangeListener;
@@ -8,7 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import lombok.Setter;
-import net.speciesm.snowsnowsnow.Main;
+import net.speciesm.particlefun.Main;
 
 /**
  * MainWindowController

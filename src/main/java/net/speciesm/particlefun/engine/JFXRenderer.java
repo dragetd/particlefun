@@ -1,4 +1,4 @@
-package net.speciesm.snowsnowsnow.engine;
+package net.speciesm.particlefun.engine;
 
 import com.sun.javafx.perf.PerformanceTracker;
 import com.sun.javafx.tk.Toolkit;
@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import net.speciesm.snowsnowsnow.model.GameStage;
+import net.speciesm.particlefun.model.GameStage;
 
 /**
  * JFXRenderer

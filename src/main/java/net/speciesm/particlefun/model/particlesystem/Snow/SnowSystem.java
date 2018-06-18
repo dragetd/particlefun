@@ -1,12 +1,12 @@
-package net.speciesm.snowsnowsnow.model.particlesystem.Snow;
+package net.speciesm.particlefun.model.particlesystem.Snow;
 
 import javafx.scene.image.PixelFormat;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import net.speciesm.snowsnowsnow.engine.Renderer;
-import net.speciesm.snowsnowsnow.model.particlesystem.GameObject;
+import net.speciesm.particlefun.engine.Renderer;
+import net.speciesm.particlefun.model.particlesystem.GameObject;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
