@@ -2,7 +2,7 @@ package net.speciesm.snowsnowsnow.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import net.speciesm.snowsnowsnow.model.particlesystem.ParticleSystem;
+import net.speciesm.snowsnowsnow.model.particlesystem.GameObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,24 +17,24 @@ public class GameStage {
     @Getter @Setter private int width;
     @Getter @Setter private int height;
 
-    private List<ParticleSystem> particlesystems;
+    @Getter private List<GameObject> gameObjects;
 
     public GameStage(int width, int height) {
         this.width = width;
         this.height = height;
 
-        particlesystems = new ArrayList<>();
+        gameObjects = new ArrayList<>();
     }
 
-    public void addParticleSystem(ParticleSystem ps) {
-        particlesystems.add(ps);
+    public void addParticleSystem(GameObject ps) {
+        gameObjects.add(ps);
     }
 
     public void tick(double tickDelta) {
-        particlesystems.forEach(p -> p.tick(tickDelta));
+        gameObjects.forEach(p -> p.tick(tickDelta));
     }
 
     public int getParticleCount() {
-        return particlesystems.stream().mapToInt(ParticleSystem::getCount).sum();
+        return gameObjects.stream().mapToInt(GameObject::getCount).sum();
     }
 }

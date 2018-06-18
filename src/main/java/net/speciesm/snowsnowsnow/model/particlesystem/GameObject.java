@@ -1,13 +1,13 @@
 package net.speciesm.snowsnowsnow.model.particlesystem;
 
-import net.speciesm.snowsnowsnow.model.Drawable;
+import net.speciesm.snowsnowsnow.engine.Renderer;
 
 /**
- * ParticleSystem
+ * GameObject
  *
  * @author Draget draget@speciesm.net
  */
-public interface ParticleSystem extends Drawable {
+public interface GameObject {
 
     /**
      * Return the number of particles currently simulated by this system
@@ -16,5 +16,9 @@ public interface ParticleSystem extends Drawable {
      */
     int getCount();
 
-    void tick(double tickDelta);
+    default void tick(double tickDelta) {
+    }
+
+    default void draw(Renderer renderer) {
+    }
 }

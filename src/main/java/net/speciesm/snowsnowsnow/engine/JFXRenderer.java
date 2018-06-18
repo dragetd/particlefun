@@ -54,7 +54,7 @@ public class JFXRenderer implements Renderer {
     }
 
     private void drawStageObjects() {
-        gameStage.draw(this);
+        gameStage.getGameObjects().forEach(g -> g.draw(this));
     }
 
     private void drawInfo() {

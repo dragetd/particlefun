@@ -20,8 +20,11 @@ import java.io.IOException;
  */
 public class Main extends Application {
 
-    public static final String WND_NAME = "snowsnowsnow";
-    public static final String WND_RESOURCEPATH = "/gui/Mainwindow.fxml";
+    private static final String WND_NAME = "snowsnowsnow";
+    private static final String WND_RESOURCEPATH = "/gui/Mainwindow.fxml";
+
+    private static final int NUM_NEW_PARTICLES = 2000;
+    private static final int NUM_MAX_PARTICLES = 40000;
 
     private GameStage gameStage;
     private GameLoop mainLoop;
@@ -66,13 +69,14 @@ public class Main extends Application {
     private static final double TAU = Math.PI * 2;
 
     public void addParticles(double x, double y) {
-        for (int i = 0; i < 1000; i++) {
+        if (gameStage.getParticleCount() > NUM_MAX_PARTICLES) return;
+
+        for (int i = 0; i < NUM_NEW_PARTICLES; i++) {
             double ang = Math.random() * TAU;
-            double rng = Math.random();
-            double vel = (((rng * rng) + rng) / 2) * 20 + 100; // more pretty distribution
-            rng = Math.random();
-            //double life = (((rng * rng) + rng) / 2) * 20 + 1; // more pretty distribution
-            double life = 10;
+            double rndVal = Math.random();
+            double vel = Math.pow(rndVal, 0.8) * 100; // prettier distribution
+
+            double life = 100;
 
             snow.addFlake(
                     x, y,

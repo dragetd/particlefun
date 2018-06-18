@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import net.speciesm.snowsnowsnow.engine.Renderer;
-import net.speciesm.snowsnowsnow.model.particlesystem.ParticleSystem;
+import net.speciesm.snowsnowsnow.model.particlesystem.GameObject;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @author Draget draget@speciesm.net
  */
-public class SnowSystem implements ParticleSystem {
+public class SnowSystem implements GameObject {
     @Data
     @AllArgsConstructor
     class Snowflake {
@@ -50,14 +50,19 @@ public class SnowSystem implements ParticleSystem {
             x += velX * tickDelta;
             y += velY * tickDelta;
 
+            // snow at new position?
             if (getPixel((int) x, (int) y) != 0) {
+                // revert movement
                 x -= velX * tickDelta;
                 y -= velY * tickDelta;
+
+                // ontop of existing snow
                 if (velY > 0 && getPixel((int) x, (int) y + 1) != 0) {
                     putDown(x, y);
                 } else {
-                    velX *= 0.4;
-                    velY *= 0.3;
+                    moveToSideIfFree();
+                    velX *= 0.8;
+                    velY *= 0.7;
                 }
 
                 /*if (velY < 0) {
@@ -90,14 +95,7 @@ public class SnowSystem implements ParticleSystem {
                 putDown(x, y);
             }
 
-            if (velX < 0.1 * tickDelta && velY < 0.1 * tickDelta) {
-                curHealth -= tickDelta;
-            }
             curHealth -= tickDelta;
-        }
-
-        private void putDownOnSnow(double tickDelta) {
-
         }
 
         private boolean moveToSideIfFree() {
