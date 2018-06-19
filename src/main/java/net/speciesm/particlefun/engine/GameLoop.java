@@ -42,7 +42,7 @@ public class GameLoop {
             animator.start();
             running = true;
         } else {
-            System.out.println("Start GameLoop: GameLoop already running!");
+            //log.warn("Start GameLoop: GameLoop already running!");
         }
     }
 
@@ -50,12 +50,11 @@ public class GameLoop {
         long tickDiff = curTimeNS - lastTickNS;
         lastTickNS = curTimeNS;
 
-        // varible tick with limits
+        // variable tick with limits
         if (tickDiff < MINTICK) return;
         if (tickDiff > MAXTICK) tickDiff = MAXTICK;
         double tickDelta = (((double) tickDiff) / NSINSEC) * gameSpeed;
 
-        //processInput();
         gameStage.tick(tickDelta);
         renderer.renderFrame(curTimeNS);
     }

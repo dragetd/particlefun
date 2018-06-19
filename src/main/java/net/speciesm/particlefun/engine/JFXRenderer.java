@@ -20,6 +20,7 @@ import net.speciesm.particlefun.model.GameStage;
 @RequiredArgsConstructor
 public class JFXRenderer implements Renderer {
     private static final long NS_IN_SEC = 1000_000_000;
+    private static final int WARN_FPS = 10;
 
     // update FPS each second
     private static final long TIMER_AVGFPS_INTERVAL = 1 * NS_IN_SEC;
@@ -58,11 +59,11 @@ public class JFXRenderer implements Renderer {
     }
 
     private void drawInfo() {
-        //if (avgFPS > MINFPS) {
+        if (avgFPS > WARN_FPS) {
         graphicsContext.setFill(Color.WHITE);
-        //} else {
-        //    graphicsContext.setFill(Color.RED);
-        //}
+        } else {
+            graphicsContext.setFill(Color.RED);
+        }
         graphicsContext.fillText(infoText, 10, 20);
     }
 

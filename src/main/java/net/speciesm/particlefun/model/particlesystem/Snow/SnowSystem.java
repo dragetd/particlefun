@@ -34,9 +34,7 @@ public class SnowSystem implements GameObject {
         private double curHealth;
         private double maxHealth;
 
-        //private final GameStage gameStage;
-
-        void fall(double tickDelta, byte[] snowImageData) {
+        void fall(double tickDelta) {
             if (curHealth <= 0) {
                 return;
             }
@@ -113,13 +111,7 @@ public class SnowSystem implements GameObject {
             setPixel((int) x, (int) y, (byte) 255, (byte) 255, (byte) 255);
             curHealth = -1;
         }
-
-        private double bounce(double in) {
-            return Math.abs(in) * (0.5 + (Math.random() * 0.55));
-        }
     }
-
-    private static final double DEFAULTLIFE = 10000;
 
     private static final int WIDTH = 640;
     private static final int HEIGHT = 480;
@@ -141,8 +133,8 @@ public class SnowSystem implements GameObject {
 
     public void tick(double tickDelta) {
         List<Snowflake> removeList = new LinkedList<>();
-        snowflakes.stream().forEach(s -> {
-            s.fall(tickDelta, snowImageData);
+        snowflakes.parallelStream().forEach(s -> {
+            s.fall(tickDelta);
             if (s.getCurHealth() <= 0) {
                 removeList.add(s);
             }
@@ -185,24 +177,5 @@ public class SnowSystem implements GameObject {
         snowflakes.forEach(s -> {
             renderer.drawPixel((int) s.getX(), (int) s.getY(), Color.WHITE);
         });
-
-//        snowflakes.forEach(s -> {
-//            double a = s.getCurHealth() / s.getMaxHealth();
-//            if (a < 0) a = 0;
-//
-//            byte r = (byte) Color.hsb(a * 900, 1, 1 - (a / 10)).getRed();
-//            byte g = (byte) Color.hsb(a * 900, 1, 1 - (a / 10)).getRed();
-//            byte b = (byte) Color.hsb(a * 900, 1, 1 - (a / 10)).getRed();
-//            setPixel((int) s.getX(), (int) s.getY(), (byte) 100, (byte) 100, (byte) 100);
-//        });
-
-//        for (int y = 0; y < HEIGHT; y++) {
-//            for (int x = 0; x < WIDTH; x++) {
-//                byte rnd = (byte) (Math.random() * 255);
-//                setPixel(x, y, rnd, rnd, rnd);
-//            }
-//        }
-
-
     }
 }
