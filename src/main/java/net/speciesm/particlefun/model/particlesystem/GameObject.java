@@ -1,6 +1,6 @@
 package net.speciesm.particlefun.model.particlesystem;
 
-import net.speciesm.particlefun.engine.Renderer;
+import net.speciesm.particlefun.engine.renderer.Renderer;
 
 /**
  * GameObject

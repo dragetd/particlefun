@@ -31,7 +31,7 @@ public class GameStage {
     }
 
     public void tick(double tickDelta) {
-        gameObjects.forEach(p -> p.tick(tickDelta));
+        gameObjects.forEach(gameObject -> gameObject.tick(tickDelta));
     }
 
     public int getParticleCount() {

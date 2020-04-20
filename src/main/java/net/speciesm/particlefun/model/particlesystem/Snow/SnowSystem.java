@@ -5,7 +5,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import net.speciesm.particlefun.engine.Renderer;
+import net.speciesm.particlefun.engine.renderer.Renderer;
 import net.speciesm.particlefun.model.particlesystem.GameObject;
 
 import java.nio.ByteBuffer;

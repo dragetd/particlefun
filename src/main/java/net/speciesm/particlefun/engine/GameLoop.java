@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import net.speciesm.particlefun.engine.renderer.Renderer;
 import net.speciesm.particlefun.model.GameStage;
 
 /**

@@ -4,27 +4,31 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 import net.speciesm.particlefun.engine.GameLoop;
-import net.speciesm.particlefun.engine.JFXRenderer;
-import net.speciesm.particlefun.engine.Renderer;
+import net.speciesm.particlefun.engine.renderer.JFX;
+import net.speciesm.particlefun.engine.renderer.PixelFlood;
+import net.speciesm.particlefun.engine.renderer.Renderer;
 import net.speciesm.particlefun.gui.MainWindowController;
 import net.speciesm.particlefun.model.GameStage;
 import net.speciesm.particlefun.model.particlesystem.Snow.SnowSystem;
 
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * Main - particlefun
  *
  * @author Draget draget@speciesm.net
  */
+@Slf4j
 public class Main extends Application {
 
     private static final String WND_NAME = "particlefun";
     private static final String WND_RESOURCEPATH = "/gui/Mainwindow.fxml";
 
-    private static final int NUM_NEW_PARTICLES = 2000;
-    private static final int NUM_MAX_PARTICLES = 40000;
+    private static final int NUM_NEW_PARTICLES = 200;
+    private static final int NUM_MAX_PARTICLES = 4000;
 
     private GameStage gameStage;
     private GameLoop mainLoop;
@@ -38,7 +42,12 @@ public class Main extends Application {
     }
 
     private MainWindowController initJFXController(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(WND_RESOURCEPATH));
+        URL resource = getClass().getResource(WND_RESOURCEPATH);
+        if (resource == null) {
+            log.error("Failed to load window resource.");
+            System.exit(1);
+        }
+        FXMLLoader loader = new FXMLLoader(resource);
 
         primaryStage.setTitle(WND_NAME);
         primaryStage.setScene(new Scene(loader.load()));
@@ -56,7 +65,9 @@ public class Main extends Application {
         gameStage = new GameStage(500, 500);
         snow = new SnowSystem();
         gameStage.addParticleSystem(snow);
-        renderer = new JFXRenderer(gameStage, windowController.getGraphicsContext());
+        //renderer = new JFX(gameStage, windowController.getGraphicsContext());
+        renderer = new PixelFlood();
+        addParticles(50, 50);
         mainLoop = new GameLoop(gameStage, renderer);
         mainLoop.start();
     }

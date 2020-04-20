@@ -1,4 +1,4 @@
-package net.speciesm.particlefun.engine;
+package net.speciesm.particlefun.engine.renderer;
 
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;

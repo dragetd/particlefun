@@ -1,7 +1,5 @@
-package net.speciesm.particlefun.engine;
+package net.speciesm.particlefun.engine.renderer;
 
-import com.sun.javafx.perf.PerformanceTracker;
-import com.sun.javafx.tk.Toolkit;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -12,25 +10,24 @@ import lombok.Setter;
 import net.speciesm.particlefun.model.GameStage;
 
 /**
- * JFXRenderer
+ * JFX
  * Implements a JavaFX-based renderer.
  *
  * @author Draget draget@speciesm.net
  */
 @RequiredArgsConstructor
-public class JFXRenderer implements Renderer {
-    private static final long NS_IN_SEC = 1000_000_000;
+public class JFX implements Renderer {
+    private static final long NSINSEC = 1000_000_000;
     private static final int WARN_FPS = 10;
 
-    // update FPS each second
-    private static final long TIMER_AVGFPS_INTERVAL = 1 * NS_IN_SEC;
+    // update average FPS display each second
+    private static final long AVG_FPS_TIMER_INTERVAL = 1 * NSINSEC;
 
-    private int frameCounter;
-    private PerformanceTracker perfTracker = Toolkit.getToolkit().getPerformanceTracker();
+    private int avgFPSFrameCounter;
     @Getter private float avgFPS;
-    private long timerLastAvgFPSTick;
+    private long avgFPSLastTimerTick;
 
-    private String infoText = "";
+    private String infoText;
 
     @Setter @NonNull private GameStage gameStage;
     @Setter @NonNull private GraphicsContext graphicsContext;
@@ -68,14 +65,12 @@ public class JFXRenderer implements Renderer {
     }
 
     private void registerRenderedFrame(final long curTimeNS) {
-        frameCounter++;
-        perfTracker.frameRendered();
-        if (curTimeNS - timerLastAvgFPSTick > TIMER_AVGFPS_INTERVAL) {
-            timerLastAvgFPSTick = curTimeNS;
-            avgFPS = perfTracker.getAverageFPS();
+        avgFPSFrameCounter++;
+        long lastFPSUpdate = curTimeNS - avgFPSLastTimerTick;
+        if (lastFPSUpdate > AVG_FPS_TIMER_INTERVAL) {
+            avgFPS = avgFPSFrameCounter /  lastFPSUpdate * NSINSEC;
+            avgFPSLastTimerTick = curTimeNS;
             infoText = String.format("%-9s %6.1f\n%-9s %6.1fK", "FPS:", avgFPS, "Particle:", gameStage.getParticleCount() / 1000d);
-
-            perfTracker.resetAverageFPS();
         }
     }
 
