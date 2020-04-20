@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 import net.speciesm.particlefun.engine.GameLoop;
 import net.speciesm.particlefun.engine.renderer.JFX;
-import net.speciesm.particlefun.engine.renderer.PixelFlood;
 import net.speciesm.particlefun.engine.renderer.Renderer;
 import net.speciesm.particlefun.gui.MainWindowController;
 import net.speciesm.particlefun.model.GameStage;
@@ -65,8 +64,7 @@ public class Main extends Application {
         gameStage = new GameStage(500, 500);
         snow = new SnowSystem();
         gameStage.addParticleSystem(snow);
-        //renderer = new JFX(gameStage, windowController.getGraphicsContext());
-        renderer = new PixelFlood();
+        renderer = new JFX(gameStage, windowController.getGraphicsContext());
         addParticles(50, 50);
         mainLoop = new GameLoop(gameStage, renderer);
         mainLoop.start();
