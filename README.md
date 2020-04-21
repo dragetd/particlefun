@@ -12,7 +12,11 @@ Plans for future improvement:
   - more fun particle effects
 
 ## Building
-This project uses Gradle version 4 or greater to build. If a local gradle is not installed, use the included wrapper `./gradlew` (for Linux) or `gradlew.bat` (for Windows)
+Requirements:
+* Gradle 6 or higher
+* Java 11 or higher
+
+This project uses Gradle to build. If a local gradle is not installed, use the included wrapper `./gradlew` (for Linux) or `gradlew.bat` (for Windows)
 
 
 Build all classes:
